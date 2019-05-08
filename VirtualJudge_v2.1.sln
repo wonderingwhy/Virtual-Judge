@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualJudge_v2.1", "VirtualJudge_v2.1\VirtualJudge_v2.1.csproj", "{02F8B526-3F44-4C05-9195-CFDE2FDD6B49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{DF03C68E-2A2D-4469-A9C8-1DA870250B21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{A65D1A2A-2D5A-48EF-82B0-3028F34C6482}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{DDF14144-615E-436C-81F9-AB9A08773D0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vjudgeCrawlForm", "vjudgeCrawlForm\vjudgeCrawlForm.csproj", "{0B0DBE9B-289B-482B-BCDA-2FCB587DE467}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vjudge", "vjudge\vjudge.csproj", "{348D21EA-5FA5-4137-A616-B250C5478541}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02F8B526-3F44-4C05-9195-CFDE2FDD6B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02F8B526-3F44-4C05-9195-CFDE2FDD6B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02F8B526-3F44-4C05-9195-CFDE2FDD6B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02F8B526-3F44-4C05-9195-CFDE2FDD6B49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF03C68E-2A2D-4469-A9C8-1DA870250B21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF03C68E-2A2D-4469-A9C8-1DA870250B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF03C68E-2A2D-4469-A9C8-1DA870250B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF03C68E-2A2D-4469-A9C8-1DA870250B21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A65D1A2A-2D5A-48EF-82B0-3028F34C6482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A65D1A2A-2D5A-48EF-82B0-3028F34C6482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A65D1A2A-2D5A-48EF-82B0-3028F34C6482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A65D1A2A-2D5A-48EF-82B0-3028F34C6482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDF14144-615E-436C-81F9-AB9A08773D0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDF14144-615E-436C-81F9-AB9A08773D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDF14144-615E-436C-81F9-AB9A08773D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDF14144-615E-436C-81F9-AB9A08773D0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B0DBE9B-289B-482B-BCDA-2FCB587DE467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B0DBE9B-289B-482B-BCDA-2FCB587DE467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B0DBE9B-289B-482B-BCDA-2FCB587DE467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B0DBE9B-289B-482B-BCDA-2FCB587DE467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{348D21EA-5FA5-4137-A616-B250C5478541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{348D21EA-5FA5-4137-A616-B250C5478541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{348D21EA-5FA5-4137-A616-B250C5478541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{348D21EA-5FA5-4137-A616-B250C5478541}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

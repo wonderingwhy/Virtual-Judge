@@ -1,0 +1,170 @@
+﻿<div class="body mfont">
+    <center>
+        <div class="well" style="width:100%">
+            <center>
+                #if($Data.mlist)
+                <h2>My Contests</h2>
+                #else
+                <h2>Contests List</h2>
+                #end
+                <br />
+
+            </center>
+            <center>
+                <div class="well">
+                    #if($Data.mlist)
+                    #else
+                    <form class="form-inline" method="post" action="ContestDo.ashx?action=csearch">
+                        <!--
+                        <label style="font-family: Consolas; font-size: 18px" for="mid">ID: </label>
+                            <input id="mid" name="mid" class="form-control" style="display:inline;width:100px" />
+                        &nbsp;
+                            -->
+                        <label style="font-family: Consolas; font-size: 18px" for="mtitle">Title: </label>
+                            <input id="mtitle" name="mtitle" value="$Data.mTitle" class="form-control" style="display:inline" />
+                        &nbsp;&nbsp;
+                        
+                        
+                        <label style="font-family: Consolas; font-size: 18px" for="mcreator">Creator: </label>
+                            <input id="mcreator" name="mcreator" value="$Data.mCreator" class="form-control" style="display:inline" />
+                        &nbsp;&nbsp;
+                        
+                        <label style="font-family:Consolas;font-size:18px" for="mstatus">Status: </label>
+                        <select class="form-control" name="mstatus" id="mstatus">
+                            <option value="">All</option>
+                            <option value="Running">Running</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Ended">Ended</option>
+                        </select>
+                        &nbsp;&nbsp;
+                        <label style="font-family: Consolas; font-size: 18px" for="mtype">Type: </label>
+                        <select class="form-control" name="mtype" id="mtype">
+                            <option value="">All</option>
+                            <option value="Public">Public</option>
+                            <option value="Private">Private</option>
+                        </select>
+                        &nbsp;&nbsp;
+                        <input id="sub" type="submit" style="width:80px;display:inline" class="btn-info form-control" value="Search" onclick="return checksearch()"/>
+                        <input id="mPage" name="Page" style="display:none" value="$Data.Page" />
+                    </form> 
+
+                    #end
+                    <br />
+                    <div style="width:90%">
+
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>Status</td>
+                                    <td>Title</td>
+                                    <td>Start Time</td>
+                                    <td>End Time</td>
+                                    <td>Type</td>
+                                    <td>Creator</td>
+                                    #if($Data.mlist)
+                                    <td width="50px"></td>
+                                    #end
+                                </tr>
+                            </thead>
+                            <tbody>
+                                #foreach($contest in $Data.contests)
+                                <tr>
+                                    <td>$contest.ContestID</td>
+                                    <td>$contest.Status</td>
+                                    <td>
+                                        #if($contest.Type == "public")
+                                        <a href="ContestDo.ashx?action=view&cid=$contest.ContestID#overview">
+                                            $contest.Title
+                                        </a>
+                                        #else
+                                        <a href="#" onclick="$('#choosecid')[0].value = '$contest.ContestID';checkcu()">
+                                            $contest.Title
+                                        </a>
+                                        #end
+                                    </td>
+                                    <td>$contest.StartTime</td>
+                                    <td>$contest.EndTime</td>
+                                    <td>$contest.Type</td>
+                                    <td>$contest.Username</td>
+                                    #if($Data.mlist && $contest.Status == "Pending")
+                                    <td><input type="button" style="width:50px;height:20px;color:blue" value="EDIT" onclick="location = 'ContestDo.ashx?action=edit&cid='+$contest.ContestID" /></td>
+                                    #elseif($Data.mlist)
+                                    <td><input type="button" style="width:50px;height:20px;color:grey" value="EDIT" disabled="disabled" /></td>
+                                    #end
+                                </tr>
+                                #end
+                            </tbody>
+                        </table>
+                    </div>
+                    #if($Data.mlist)
+                    <a  href="ContestDo.ashx?action=mlist&Page=1" style="font-size:18px;font-family:Consolas">[&lt;&lt;]</a>
+                    #if($Data.Page != "1")
+                    <a href="ContestDo.ashx?action=mlist&Page=#set($pPage = $Data.Page - 1)$pPage" style="font-size:18px;font-family:Consolas">[&lt;]</a>
+                    #else
+                    <a style="font-size:18px;font-family:Consolas;color:gray">[&lt;]</a>
+                    #end
+
+                    #else
+                    <a id="toFirst" onclick="" href="ContestDo.ashx?action=list&Page=1" style="font-size:18px;font-family:Consolas">[&lt;&lt;]</a>
+                    #if($Data.Page != "1")
+                    <a id="toPrev" onclick="" href="ContestDo.ashx?action=list&Page=#set($pPage = $Data.Page - 1)$pPage" style="font-size:18px;font-family:Consolas">[&lt;]</a>
+                    #else
+                    <a id="toPrev"  style="font-size:18px;font-family:Consolas;color:gray">[&lt;]</a>
+                    #end
+                    #end
+
+                    #if($Data.mlist)
+                    #if($Data.IsLast == "0")
+                    <a  href="ContestDo.ashx?action=mlist&Page=#set($nPage = $Data.Page + 1)$nPage" style="font-size: 18px; font-family: Consolas; ">[&gt;]</a>
+                    #else
+                    <a style="font-size:18px;font-family:Consolas;color:gray">[&gt;]</a>
+                    #end
+
+                    <a  href="ContestDo.ashx?action=mlist&Page=0" style="font-size:18px;font-family:Consolas">[&gt;&gt;]</a>
+                    #else
+                    #if($Data.IsLast == "0")
+                    <a onclick="" id="toNext" href="ContestDo.ashx?action=list&Page=#set($nPage = $Data.Page + 1)$nPage" style="font-size: 18px; font-family: Consolas; ">[&gt;]</a>
+                    #else
+                    <a id="toNext"  style="font-size:18px;font-family:Consolas;color:gray">[&gt;]</a>
+                    #end
+                    <a onclick="" id="toLast" href="ContestDo.ashx?action=list&Page=0" style="font-size:18px;font-family:Consolas">[&gt;&gt;]</a>
+                    #end
+                </div>
+                #if($Data.mlist)
+                #elseif($Data.csearch)
+                <script>
+                    $("#mstatus option[value='$Data.mStatus']").attr("selected", true);
+                    $("#mtype option[value='$Data.mType']").attr("selected", true);
+
+                    $("#toFirst").attr("href", "#");
+                    $("#toFirst").attr("onclick", "ToFirst();");
+                    if ($("#toPrev").attr("href")) {
+                        $("#toPrev").attr("href", "#");
+                        $("#toPrev").attr("onclick", "ToPrev();");
+                    }
+                    if ($("#toNext").attr("href")) {
+                        $("#toNext").attr("href", "#");
+                        $("#toNext").attr("onclick", "ToNext();");
+                    }
+                    $("#toLast").attr("href", "#");
+                    $("#toLast").attr("onclick", "ToLast();");
+                    /*
+                    $("#toFirst").attr("href", $("#toFirst").attr("href").replace("list", "csearch"));
+                    if ($("#toPrev").attr("href")) {
+                        $("#toPrev").attr("href", $("#toPrev").attr("href").replace("list", "csearch"));
+                    }
+                    if ($("#toNext").attr("href")) {
+                        $("#toNext").attr("href", $("#toNext").attr("href").replace("list", "csearch"));
+                    }
+                    $("#toLast").attr("href", $("#toLast").attr("href").replace("list", "csearch"));
+                    */
+                </script>
+                #end
+
+            </center>
+        </div>
+    </center>
+
+</div>

@@ -1,0 +1,100 @@
+﻿<div class="body mfont" style="position:relative">
+    <form class="">
+        <div style="position:relative">
+            <div class="well form-group" style="float:left;position:absolute;top:0;left:50px">
+                <table  class="table table-bordered" style="width:450px;">
+                    <tbody>
+                        <tr>
+                            <td width="110px">Title*</td>
+                            <td>
+                                <input value="$Data.Title" id="ctitle" class="form-control" maxlength="20"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Start Time*</td>
+                            <td><input value="$Data.Time" id="stime" class="Wdate form-control" onclick="WdatePicker({ lang: 'en', dateFmt: 'HH:mm:ss MM/dd/yyyy' })" /></td>
+                        </tr>
+                        <tr>
+                            <td>Length*</td>
+                            <td>
+                                <input value="$Data.Length.Days" id="dd" onblur="check(this, 1000)" maxlength="3" onkeyup="checkNum(this)"  class="form-control" style="width:55px;display:inline" />&nbsp;days
+                                <input value="$Data.Length.Hours" id="hh" onblur="check(this, 24)" maxlength="2" onkeyup="checkNum(this)"  class="form-control" style="width:55px;display:inline" />&nbsp;:
+                                <input value="$Data.Length.Minutes" id="mm" onblur="check(this, 60)" maxlength="2" onkeyup="checkNum(this)"  class="form-control" style="width:55px;display:inline" />&nbsp;:
+                                <input value="$Data.Length.Seconds" id="ss" onblur="check(this, 60)" maxlength="2" onkeyup="checkNum(this)"  class="form-control" style="width:55px;display:inline" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>
+                                <input value="$Data.Psd" id="psd" type="password" maxlength="6" class="form-control" style="width:87px;display:inline" />
+                                Keep blank to make it public
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Declaration</td>
+                            <td>
+                                <textarea id="dcl" class="form-control" rows="3" maxlength="100">$Data.Dec</textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span id="ConAddMsg" class="text" style="color:red;font-size:10px"></span>
+            </div>
+            <div class="well" style="float:left;position:absolute;top:0;left:600px">
+                <table class="table table-bordered" style="width:700px;text-align:center">
+                    <thead>
+                        <tr>
+                            <td width="150px">OJ</td>
+                            <td width="100px">ID</td>
+                            <td width="200px">Title</td>
+                            <td width="200px">Alias</td>
+                            <td width="60px"></td>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        #if($Data.edit)
+                        
+                            #foreach($pro in $Data.pros)
+                        <tr>
+                            <td style="display:none"><input value="$pro.ProblemID" /></td>
+                            <td>$pro.OJName</td>
+                            <td><input value="$pro.OJProblemID" class='form-control' disabled='disabled' /></td>
+                            <td><a href="ProblemDo.ashx?action=view&pid=$pro.ProblemID" target='_blank'>$pro.PreTitle</a></td>
+                            <td><input value="$pro.Title" class='form-control' disabled='disabled' /></td>
+                            <td><input value='DEL' type='button' class='btn btn-warning' onclick='del($(this))' /></td>
+                        </tr>
+                            #end
+                        #end
+                        <tr id="current">
+                            <td style="display:none"><input id="id" value="" /></td>
+                            <td>
+                                <select id="select" class="form-control">
+                                    #foreach($oj in $Data.OJs)
+                                    <option value="$oj.OJID">$oj.OJName</option>
+                                    #end
+                                </select>
+                            </td>
+                            <td><input style="width:90px" id="pid" class="form-control" /><a href="#" onclick="select(this)" style="display:none;width:50px">select</a></td>
+                            <td><a style="vertical-align: middle;" id="ptitle" href="#"></a></td>
+                            <td><input id="alias" class="form-control" maxlength="20" /></td>
+                            <td><input value="ADD" type="button" class="btn btn-info" onclick="addNew()" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <script>
+                    $('#pid').bind('input propertychange', getTitle);
+                    $('#select').change(getTitle);
+                </script>
+                <center>
+                    #if($Data.edit)
+                    <input id="editcid" style="display:none" value="$Data.ID"/>
+                    <input style="width:74px" value="submit" type="button" class="btn btn-info" onclick="medit()" />
+                    #else
+                    <input style="width:74px" value="submit" type="button" class="btn btn-info" onclick="msubmit()" />
+                    #end
+                </center>
+            </div>
+        </div>
+    </form>
+    <input style="display:none" id="contestadd"/>
+</div>

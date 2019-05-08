@@ -1,0 +1,99 @@
+﻿<center>
+    <div class="well">
+        <form class="form-inline" method="post" action="ContestDo.ashx?action=csearch">
+            <label style="font-family: Consolas; font-size: 18px" for="muid">User: </label>
+            <input class="form-control" id="muid"/>
+            &nbsp;&nbsp;
+            <label style="font-family: Consolas; font-size: 18px" for="mpid">Pro.ID: </label>
+            <select class="form-control" id="mpid">
+                <option value="" selected="selected">All</option>
+                #foreach($problem in $Data.problems)
+                <option value="$problem.OrderID">$problem.OrderID. $problem.Title</option>
+                #end
+            </select>
+            &nbsp;&nbsp;
+            <label style="font-family:Consolas;font-size:18px" for="msolstatus">Status: </label>
+            <select class="form-control" id="msolstatus">
+                <option value="" selected="selected">All</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <input id="mPage" style="display:none" value="1" />
+        </form> 
+        <script>
+            $('#muid').bind('input propertychange', statusinit);
+            $('#mpid').change(statusinit);
+            $('#msolstatus').change(statusinit);
+        </script>
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td width="50px">RunID</td>
+                    <td width="50px">Pro.ID</td>
+                    <td>Status</td>
+                    <td>User</td>
+                    <td>Time</td>
+                    <td>Memory</td>
+                    <td>Length</td>
+                    <td>Compiler</td>
+                    <td>Submit Time</td>
+                </tr>
+            </thead>
+            <tbody id="sols">
+                #foreach($solution in $Data.solutions)
+                <tr style="display:none">
+                    <td>$solution.SolutionID</td>
+                    <td><a href="#" onclick="pshow('$solution.OrderID')">$solution.OrderID</a></td>
+                    <td>$solution.Status</td>
+                    <td>$solution.Username</td>
+                    <td>$solution.RunTime</td>
+                    <td>$solution.RunMemory</td>
+                    <td>
+                        #if($Data.contest.Status == "Ended" || $solution.IsVisible)
+                        <a href="#status" onclick="ShowCode($(this), 'divCode', 'fade')">$solution.CodeLength</a>
+                        #else
+                        $solution.CodeLength
+                        #end
+                    </td>
+                    <td>$solution.CompilerName</td>
+                    <td>$solution.SubmitTime</td>
+                </tr>
+                #end
+            </tbody>
+        </table>
+        <input id="base" value="0" style="display:none"/>
+        <input id="sum" value="$Data.solutions.Count()" style="display:none"/>
+        <input id="cnt" value="0" style="display:none" />
+        <input id="npp" value="20" style="display:none" />
+        <a onclick="sToFirst();return false" href="#" style="font-size:18px;font-family:Consolas">[&lt;&lt;]</a>
+        <a id="toprev1" onclick="sToPrev(); return false" href="#" style="font-size: 18px; font-family: Consolas; display: none">[&lt;]</a>
+        <a id="toprev2" style="font-size: 18px; font-family: Consolas; color: gray;">[&lt;]</a>
+        <a id="tonext1" onclick="sToNext(); return false" href="#" style="font-size: 18px; font-family: Consolas; ">[&gt;]</a>
+        <a id="tonext2" style="font-size: 18px; font-family: Consolas; color: gray;display:none">[&gt;]</a>
+        <a onclick="sToLast();return false" href="#" style="font-size:18px;font-family:Consolas">[&gt;&gt;]</a>
+    </div>
+</center>
+<div id="fade" class="black_overlay">
+</div>
+<div id="divCode" class="white_content_small" style="height:630px;width:30%;left:35%;top:10%">
+    <div>
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;User: <h5 id="uidcode" style="display:inline">Username</h5>
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;Pro.ID: <h5 id="pidcode" style="display:inline">Pro.ID</h5>
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;Status: <h5 id="stscode" style="display:inline">Status</h5>
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;Compiler: <h5 id="cplcode" style="display:inline">Compiler</h5>
+        <br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<h5 style="display:inline">SourceCode</h5>
+        <center>
+            <textarea id="sourcecode" disabled="disabled" spellcheck="false" style="width:90%;left:5%;height:420px" class="form-control"></textarea>
+            <br />
+            <input type="button" id="cancelCode" style="width:18%;" class="btn-info form-control" value="cancel" onclick="CloseDiv('divCode', 'fade')" />
+        </center>
+    </div>
+</div>

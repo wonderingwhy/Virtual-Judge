@@ -1,0 +1,35 @@
+﻿<center>
+    <div class="body mfont" style="width:50%">
+        <center>
+            <div class="well">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td>Status</td>
+                            <td>ID</td>
+                            <td>Title</td>
+                            #if($Data.contest.Status == "Ended")
+                            <td>Source</td>
+                            #end
+                            <td>Accepted / Submission</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        #foreach($problem in $Data.problems)
+                        <tr>
+                            <td>$problem.Status</td>
+                            <td><a href="#problem" onclick="pshow('$problem.OrderID')">$problem.OrderID</a></td>
+                            <td><a href="#problem" onclick="pshow('$problem.OrderID')">$problem.Title</a></td>
+                            #if($Data.contest.Status == "Ended")
+                            <td>$problem.OJName $problem.OJProblemID</td>
+                            #end
+                            <td>$problem.Accepted / $problem.Submit</td>
+                        </tr>
+                        #end
+                    </tbody>
+                </table>
+            </div>
+        </center>
+
+    </div>
+</center>

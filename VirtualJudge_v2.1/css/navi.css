@@ -1,0 +1,40 @@
+/*LESS Document*/
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+.navi {
+  width: 100%;
+  height: 40px;
+  background: #78c5f7;
+  box-shadow: 0 0 2px;
+}
+.navi ul {
+  width: 100%;
+  height: 40px;
+  background: #78c5f7;
+  position: relative;
+  margin: 0 auto;
+}
+.navi ul li {
+  float: left;
+}
+.navi ul li a {
+  display: block;
+  padding: 0 10px;
+  line-height: 40px;
+  font-size: 20px;
+  font-family:'Microsoft YaHei UI';
+  color: #000;
+}
+.navi .block {
+  width: 48px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  z-index: 99;
+}

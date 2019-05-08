@@ -1,0 +1,61 @@
+﻿<div class="body mfont">
+    <center>
+        <div class="well" style="width:80%">
+            <center>
+                <h3><b>$Data.problem.Title</b></h3>
+                Time Limit: $Data.problem.TimeLimit &nbsp; Memory Limit: $Data.problem.MemoryLimit
+                <br />
+                Accepted: $Data.problem.Accepted &nbsp; Submissions: $Data.problem.Submit
+                <br />
+                <br />
+            </center>
+            <center>
+                <div class="well">
+                    <table class="table" style="text-align:left">
+                        <tbody>
+                            <tr>
+                                <td><h5><b>Problem Description</b></h5></td>
+                            </tr>
+                            <tr>
+                                <td>$Data.problem.Description</td>
+                            </tr>
+                            #if($Data.problem.Input != "")
+                            <tr>
+                                <td><h5><b>Input</b></h5></td>
+                            </tr>
+                            <tr>
+                                <td>$Data.problem.Input</td>
+                            </tr>
+                            #end
+                            #if($Data.problem.Output != "")
+                            <tr>
+                                <td><h5><b>Output</b></h5></td>
+                            </tr>
+                            <tr>
+                                <td>$Data.problem.Output</td>
+                            </tr>
+                            #end
+                            #if($Data.problem.SampleInput != "")
+                            <tr>
+                                <td><h5><b>Sample Input</b></h5></td>
+                            </tr>
+                            <tr>
+                                <td><pre>$Data.problem.SampleInput</pre></td>
+                            </tr>
+                            #end
+                            #if($Data.problem.SampleOutput != "")
+                            <tr>
+                                <td><h5><b>Sample Output</b></h5></td>
+                            </tr>
+                            <tr>
+                                <td><pre>$Data.problem.SampleOutput</pre></td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                </div>
+            </center>
+        </div>
+    </center>
+    
+</div>

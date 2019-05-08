@@ -1,0 +1,60 @@
+﻿<div class="well">
+    <center>
+        <table style="text-align:center" class="table table-bordered">
+            <thead>
+                <tr>
+                    <td width="10px">Rank</td>
+                    <td>User</td>
+                    <td class="10px">Pros</td>
+                    <td class="rkcol">Penalty</td>
+                    #foreach($problem in $Data.problems)
+                    <td class="rkcol">$problem.OrderID</td>
+                    #end
+                </tr>
+            </thead>
+            <tbody>
+                #foreach($user in $Data.users)
+                <tr>
+                    <td>$user.Rank</td>
+                    <td>
+                        $user.Nickname
+                        ($user.Username)
+                    </td>
+                    <td>$user.ProsSolved</td>
+                    <td>$user.Timer</td>
+                    #foreach($item in $user.Items)
+                    #if($item.IsFirst)
+                    <td style="background-color:#91fefe">
+                        #if($item.Time != "00:00:00")
+                        $item.Time
+                        #end
+                        #if($item.Penalty > 0)
+                        ($item.Penalty)
+                        #end
+                    </td>
+                    #else
+                    <td>
+                        #if($item.Time != "00:00:00")
+                            $item.Time
+                        #end
+                        #if($item.Penalty > 0)
+                            ($item.Penalty)
+                        #end
+                    </td>
+                    #end
+                    #end
+                </tr>
+                #end
+            </tbody>
+        </table>
+    </center>
+ 
+</div>
+<script>
+    
+    var td = $(".rkcol");
+    for (var i = 0; i < td.length; ++i) {
+        //console.log(parseInt(90 / td.length) + "%");
+        td[i].width = parseInt(85 / td.length) + "%";
+    }
+</script>

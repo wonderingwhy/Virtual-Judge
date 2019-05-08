@@ -1,0 +1,30 @@
+﻿<center>
+    <div style="width:30%;">
+        <form method="post" action="ContestDo.ashx?action=submit">
+            <br />
+            <br />
+            <h5 style="display:inline"><b>Problem:</b></h5>&nbsp;&nbsp;
+            <input id="currentOJID" style="display:none" value="0"/>
+            <input id="cid" name="cid" style="display:none" value="$Data.contest.ContestID"/>
+            <select name="pselect" id="titles" onchange="getCompilers()" class="form-control" style="display:inline;width:250px">
+                #foreach($problem in $Data.problems)
+                <option value="$problem.ContestProblemID&$problem.OJID">$problem.OrderID. $problem.Title</option>
+                #end
+            </select>
+            <script>
+                document.getElementById("titles").onchange();
+            </script>
+            <br />
+            <br />
+            <h5 style="display:inline"><b>Compiler:</b></h5>&nbsp;&nbsp;
+            <select name="cselect" id="compilers" class="form-control" style="display:inline;width:200px">
+            </select>
+            <br />
+            <br />
+            <br />
+            <textarea id="codetxt" name="code" class="form-control" spellcheck="false" style="height:550px;font-family:Consolas;"></textarea>
+            <br />
+            <input type="submit" style="width:74px;display:inline" class="btn-info form-control" value="submit" onclick="return checkcode()"/>
+        </form>
+    </div>
+</center>

@@ -1,0 +1,119 @@
+﻿<script>
+    window.onload = autoLog;
+</script>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Virtual Judge</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="index.ashx">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contest<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="ContestDo.ashx?action=list">All Contests</a></li>
+                        <li><a href="ContestDo.ashx?action=mlist">My Contests</a></li>
+                        <li><a href="ContestDo.ashx?action=add">Add New Contest</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a id="right1" href="#" onclick="ShowDiv('divLog', 'fade')">Log in</a></li>
+                <li><a id="right2" href="#" onclick="ShowDiv('divReg', 'fade')">Register</a></li>
+                <li style="display:none"><a id="right3" href="#" onclick="getInfo(this);ShowDiv('divMdf', 'fade')"></a></li>
+                <li style="display:none"><a id="right4" href="#" onclick="logout()">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="fade" class="black_overlay">
+</div>
+<div id="divLog" style="height:200px" class="white_content_small">
+    <div>
+        <center>
+            <br />
+            <br />
+            <span style="display:none">Username</span><input maxlength="16" spellcheck="false" id="uidlog" placeholder="Username" class="text form-control" style="display:inline;width:150px;" />
+            <br />
+            <br />
+            <span style="display:none">Password</span><input maxlength="16" spellcheck="false" id="psdlog" placeholder="Password" class="text form-control" style="display:inline;width:150px" type="password" />
+            <br />
+            <br />
+            <input type="button" style="width:65px;display:inline" class="btn-info form-control" value="log in" onclick="login()" />&nbsp;&nbsp;&nbsp;
+            <input type="button" id="cancelLog" style="width: 65px; display: inline" class="btn-info form-control" value="cancel" onclick="CloseDiv('divLog', 'fade')" />
+        </center>
+    </div>
+</div>
+<div id="divReg" style="height:330px" class="white_content_small">
+    <div>
+        <center>
+            <br />
+            <br />
+            <span style="display:none">Username</span><input maxlength="16" spellcheck="false" id="uidreg" placeholder="Username" class="text form-control" style="display: inline; width: 150px;" />
+            <br />
+            <br />
+            <span style="display:none">Password</span><input maxlength="16" spellcheck="false" id="psdreg" placeholder="Password" class="text form-control" style="display: inline; width: 150px;" type="password" />
+            <br />
+            <br />
+            <span style="display:none">Password Again</span><input maxlength="16" spellcheck="false" id="psdreg2" placeholder="Password Again" class="text form-control" style="display: inline; width: 150px;" type="password" />
+            <br />
+            <br />
+            <span style="display:none">Nickname</span><input maxlength="10" spellcheck="false" id="nnmreg" placeholder="Nickname" class="text form-control" style="display: inline; width: 150px;" />
+            <br />
+            <br />
+            <input type="button" style="width:70px;display:inline" class="btn-info form-control" value="register" onclick="reg()" />&nbsp;&nbsp;&nbsp;
+            <input type="button" id="cancelReg" style="width: 70px; display: inline" class="btn-info form-control" value="cancel" onclick="CloseDiv('divReg', 'fade')" /><br />
+            <span id="RegMsg" class="text" style="color:red;font-size:10px"></span>
+        </center>
+    </div>
+</div>
+<div id="divMdf" style="height:380px" class="white_content_small">
+    <div>
+        <center>
+            <br />
+            <br />
+            <span style="display:none">Username</span><input maxlength="16" spellcheck="false" disabled="disabled" id="uidmdf" placeholder="Username" class="text form-control" style="display: inline; width: 150px;" />
+            <br />
+            <br />
+            <span style="display:none">Old Password</span><input maxlength="16" spellcheck="false" id="opsdmdf" placeholder="Old Password" class="text form-control" style="display: inline; width: 150px;" type="password" />
+            <br />
+            <br />
+            <span style="display:none">New Password</span><input maxlength="16" spellcheck="false" id="npsdmdf" placeholder="New Password" class="text form-control" style="display: inline; width: 150px;" type="password" />
+            <br />
+            <br />
+            <span style="display:none">Password Again</span><input maxlength="16" spellcheck="false" id="npsdmdf2" placeholder="Password Again" class="text form-control" style="display: inline; width: 150px;" type="password" />
+            <br />
+            <br />
+            <span style="display:none">Nickname</span><input maxlength="10" spellcheck="false" id="nnmmdf" placeholder="Nickname" class="text form-control" style="display: inline; width: 150px;" />
+            <br />
+            <br />
+            <input type="button" style="width: 67px; display: inline" class="btn-info form-control" value="modify" onclick="mdf()" />&nbsp;&nbsp;&nbsp;
+            <input type="button" id="cancelMdf" style="width: 67px; display: inline" class="btn-info form-control" value="cancel" onclick="CloseDiv('divMdf', 'fade')" /><br />
+            <span id="MdfMsg" class="text" style="color:red;font-size:10px"></span>
+        </center>
+    </div>
+</div>
+<div id="divPsd" style="height:150px" class="white_content_small">
+    <div>
+        <center>
+            <br />
+            <br />
+            <span style="display:none">Password</span><input maxlength="6" spellcheck="false" id="conpsd" placeholder="Password" class="text form-control" style="display: inline; width: 150px;" type="password" />
+            <br />
+            <br />
+            <input class="text" id="choosecid" style="display:none" value="" />
+            <input type="button" style="width: 67px; display: inline" class="btn-info form-control" value="enter" onclick="CheckAndView()" />&nbsp;&nbsp;&nbsp;
+            <input type="button" id="cancelPsd" style="width: 67px; display: inline" class="btn-info form-control" value="cancel" onclick="CloseDiv('divPsd', 'fade')" /><br />
+            <span id="PsdMsg" class="text" style="color:red;font-size:10px"></span>
+        </center>
+    </div>
+</div>

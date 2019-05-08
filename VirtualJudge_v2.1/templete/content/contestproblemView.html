@@ -1,0 +1,72 @@
+﻿<div id="myPills">
+    <ul style="margin-left:200px;margin-top:10px;margin-bottom:10px" class="nav nav-pills" role="tablist">
+        #foreach($problem in $Data.problems)
+        <li role="presentation"><a href="#$problem.OrderID" aria-controls="$problem.OrderID" role="tab" data-toggle="tab">$problem.OrderID</a></li>
+        #end
+    </ul>
+    <div class="tab-content">
+        #foreach($problem in $Data.problems)
+        <div role="tabpanel" class="tab-pane fade" id="$problem.OrderID">
+            <center>
+                <div class="well" style="width:80%">
+                    <center>
+                        <h3><b>$problem.Title</b></h3>
+                        TimeLimit: $problem.TimeLimit &nbsp; MemoryLimit: $problem.MemoryLimit
+                        <br />
+                        Accepted: $problem.Accepted &nbsp; Submissions: $problem.Submit
+                        <br />
+                        <br />
+                    </center>
+                    <center>
+                        <div class="well">
+                            <table class="table" style="text-align:left">
+                                <tbody>
+                                    <tr>
+                                        <td><h5><b>Problem Description</b></h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td>$problem.Description</td>
+                                    </tr>
+                                    #if($problem.Input != "")
+                                    <tr>
+                                        <td><h5><b>Input</b></h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td>$problem.Input</td>
+                                    </tr>
+                                    #end
+                                    #if($problem.Output != "")
+                                    <tr>
+                                        <td><h5><b>Output</b></h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td>$problem.Output</td>
+                                    </tr>
+                                    #end
+                                    #if($problem.SampleInput != "")
+                                    <tr>
+                                        <td><h5><b>Sample Input</b></h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td><pre>$problem.SampleInput</pre></td>
+                                    </tr>
+                                    #end
+                                    #if($problem.SampleOutput != "")
+                                    <tr>
+                                        <td><h5><b>Sample Output</b></h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td><pre>$problem.SampleOutput</pre></td>
+                                    </tr>
+                                    #end
+                                </tbody>
+                            </table>
+                        </div>
+                    </center>
+                </div>
+            </center>
+        </div>
+        #end
+    </div>
+    
+</div>

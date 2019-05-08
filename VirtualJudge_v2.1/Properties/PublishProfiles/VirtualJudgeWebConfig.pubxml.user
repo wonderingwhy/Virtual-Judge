@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\WebSite</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/DAL.dll">
+      <publishTime>04/27/2016 01:53:53</publishTime>
+    </File>
+    <File Include="bin/Helpers.dll">
+      <publishTime>04/27/2016 01:53:52</publishTime>
+    </File>
+    <File Include="bin/Models.dll">
+      <publishTime>04/27/2016 01:53:52</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>10/02/2015 23:04:34</publishTime>
+    </File>
+    <File Include="bin/NVelocity.dll">
+      <publishTime>11/09/2013 20:04:44</publishTime>
+    </File>
+    <File Include="bin/VirtualJudge_v2.1.dll">
+      <publishTime>04/28/2016 08:23:28</publishTime>
+    </File>
+    <File Include="ContestDo.ashx">
+      <publishTime>04/24/2016 21:31:26</publishTime>
+    </File>
+    <File Include="css/bootstrap.min.css">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="css/navi.css">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="css/xuenene.css">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="index.ashx">
+      <publishTime>04/24/2016 21:31:37</publishTime>
+    </File>
+    <File Include="js/ajax.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/bootstrap.min.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/jquery-2.1.3.min.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/json.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/calendar.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/lang/en.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/lang/zh-cn.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/lang/zh-tw.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/skin/datePicker.gif">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/skin/default/datepicker.css">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/skin/default/img.gif">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/skin/WdatePicker.css">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/skin/whyGreen/bg.jpg">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/skin/whyGreen/datepicker.css">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/skin/whyGreen/img.gif">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/WdatePicker.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/开发包/lang/en.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/开发包/lang/zh-cn.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/开发包/lang/zh-tw.js">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/开发包/readme.txt">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/开发包/skin/datePicker.gif">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/开发包/skin/default/datepicker.css">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/开发包/skin/default/img.gif">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/开发包/skin/WdatePicker.css">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/开发包/skin/whyGreen/bg.jpg">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/开发包/skin/whyGreen/datepicker.css">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/My97DatePicker/开发包/skin/whyGreen/img.gif">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="js/xuenene.js">
+      <publishTime>04/25/2016 02:16:59</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>04/28/2016 08:23:30</publishTime>
+    </File>
+    <File Include="ProblemDo.ashx">
+      <publishTime>04/24/2016 21:30:57</publishTime>
+    </File>
+    <File Include="templete/common/body_foot.html">
+      <publishTime>04/26/2016 02:40:19</publishTime>
+    </File>
+    <File Include="templete/common/body_nav.html">
+      <publishTime>04/25/2016 17:54:48</publishTime>
+    </File>
+    <File Include="templete/common/head.html">
+      <publishTime>04/25/2016 02:23:00</publishTime>
+    </File>
+    <File Include="templete/content/contestAdd.html">
+      <publishTime>04/25/2016 01:59:08</publishTime>
+    </File>
+    <File Include="templete/content/contestList.html">
+      <publishTime>04/25/2016 02:21:16</publishTime>
+    </File>
+    <File Include="templete/content/contestproblemView.html">
+      <publishTime>04/25/2016 17:53:29</publishTime>
+    </File>
+    <File Include="templete/content/contestView.html">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="templete/content/home.html">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="templete/content/problemView.html">
+      <publishTime>04/25/2016 17:52:59</publishTime>
+    </File>
+    <File Include="templete/content/ranklist.html">
+      <publishTime>04/27/2016 00:09:42</publishTime>
+    </File>
+    <File Include="templete/content/status.html">
+      <publishTime>04/25/2016 02:29:55</publishTime>
+    </File>
+    <File Include="templete/content/submit.html">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="templete/contestAdd.html">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="templete/contestList.html">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="templete/contestproblemView.html">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="templete/contestView.html">
+      <publishTime>04/25/2016 01:33:28</publishTime>
+    </File>
+    <File Include="templete/error.html">
+      <publishTime>04/26/2016 02:40:58</publishTime>
+    </File>
+    <File Include="templete/index.html">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="templete/problemView.html">
+      <publishTime>04/24/2016 22:13:47</publishTime>
+    </File>
+    <File Include="UserDo.ashx">
+      <publishTime>04/24/2016 21:31:15</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/28/2016 08:23:29</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

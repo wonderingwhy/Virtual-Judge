@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    #parse("common/head.html")
+</head>
+<body>
+    #parse("common/body_nav.html")
+    <div class="well mfont" style="width:100%">
+        <center>
+            <h1><b>$Data.contest.Title</b></h1>
+        </center>
+        <br />
+        <h4 style="margin-left: 30%"><b>&nbsp;Start&nbsp; Time: $Data.contest.StartTime&nbsp;&nbsp;&nbsp;&nbsp;Creator: $Data.contest.Nickname</b></h4>
+
+        <h4 style="margin-left: 30% "><b>&nbsp;&nbsp;End&nbsp;&nbsp; Time: $Data.contest.EndTime&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type: $Data.contest.Type </b></h4>
+
+        <h4 style="margin-left: 30%"><b>Current Time: <span id='c_time'>1970/1/1 0:00:00</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status: $Data.contest.Status</b></h4>
+        <br />
+        <script>
+            var ts = $Data.ctime;
+            window.onload = function () {
+                getTime();
+                autoLog();
+            }
+            setInterval("getTime()", 1000);
+        </script>
+        <div id="myTabs">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a rel="#overview" href="#overview" aria-controls="overview" role="tab" data-toggle="tab">overview</a></li>
+                <li role="presentation"><a rel="#problem" href="#problem" aria-controls="problem" role="tab" data-toggle="tab">problem</a></li>
+                <li role="presentation"><a rel="#submit" href="#submit" aria-controls="submit" role="tab" data-toggle="tab">submit</a></li>
+                <li role="presentation"><a rel="#status" href="#status" aria-controls="status" role="tab" data-toggle="tab">status</a></li>
+                <li role="presentation"><a rel="#ranklist" href="#ranklist" aria-controls="ranklist" role="tab" data-toggle="tab">ranklist</a></li>
+
+            </ul>
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="overview">
+                    #parse("content/contestView.html")
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="problem">
+                    #parse("content/contestproblemView.html")
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="submit">
+                    #parse("content/submit.html")
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="status">
+                    #parse("content/status.html")
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="ranklist">
+                    #parse("content/ranklist.html")
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="fade" class="black_overlay">
+    </div>
+
+    <script>
+
+        var url = window.location.hash;
+        //console.log(url);
+        if (url == "#problem" || url == "#overview" || url == "#submit" || url == "#status" || url == "#ranklist") {
+            if (url == "#status") {
+                statusinit();
+            }
+            $("#myTabs a[href='" + url + "']").tab("show");
+        }
+        else {
+            $("#myTabs a[href='#overview']").tab("show");
+            window.location.hash = "#overview";
+        }
+        $('#myPills a:first').tab('show');
+
+        $("#myTabs ul li a").click(function (e) {
+            if ($(this).html().length == 1) {
+                return;
+            }
+            window.location.hash = $(this).html();
+            e.preventDefault();
+            // console.log($(this).html());
+            if ($(this).html() == "status") {
+                statusinit();
+            }
+            $(this).tab("show");
+        })
+        $("#myPills ul li a").click(function (e) {
+            e.preventDefault();
+            $(this).tab("show");
+        })
+
+
+
+    </script>
+    #parse("common/body_foot.html")
+</body>
+</html>
